@@ -2,12 +2,31 @@ require 'date'
 require 'pry'
 class Enigma
 
+  def initialize
+    @alphabet = ("a".."z").to_a << " "
+  end
+
   def encrypt(message, key, date)
     shift =  find_shifts(key, date)
     encrypted_message = move_letters(shift, message)
   end
 
-
+  def move_letters(shift, message)
+    encrypted = []
+    each_letter = message.chars.map { |letter| letter}
+    shift_count = 0
+    each_letter.each do |letter|
+      index = @alphabet.index(letter)
+      find = (index + shift[shift_count]) % 27
+      encrypted << @alphabet[find]
+      if shift_count == 3
+        shift_count = 0
+      else
+        shift_count += 1
+      end
+    end
+    encrypted.join
+  end
 
   def find_shifts(key, date)
     shifts = []

@@ -31,6 +31,6 @@ class EnigmaTest < Minitest::Test
 
   def test_it_can_move_letters
     enigma = Enigma.new
-    assert_equal "keder ohulw", enigma.move_letters
+    assert_equal "keder ohulw", enigma.move_letters([3,27,73,20], "hello world")
   end
 end
