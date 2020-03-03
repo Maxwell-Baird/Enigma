@@ -18,12 +18,29 @@ class Enigma
 
   def decrypt(ciphertext, key, date)
     shift =  find_shifts(key, date)
-    decrypted_message = move_letters(shift, ciphertext)
+    decrypted_message = move_letters_left(shift, ciphertext)
     hash = {
       :decryption => decrypted_message,
       :key => key,
       :date => date
     }
+  end
+
+  def move_letters_left(shift, message)
+    encrypted = []
+    each_letter = message.chars.map { |letter| letter}
+    shift_count = 0
+    each_letter.each do |letter|
+      index = @alphabet.index(letter)
+      find = (index - shift[shift_count]) % 27
+      encrypted << @alphabet[find]
+      if shift_count == 3
+        shift_count = 0
+      else
+        shift_count += 1
+      end
+    end
+    encrypted.join
   end
 
   def move_letters(shift, message)
