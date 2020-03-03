@@ -16,6 +16,9 @@ class EnigmaTest < Minitest::Test
       date: "040895"
     }
     assert_equal expected, enigma.encrypt("hello world", "02715", "040895")
+    enigma.stubs(:rand).returns(135)
+    binding.pry
+    assert_equal '00135', enigma.encrypt("hello world", "040895")[:key]
   end
 
   def test_it_can_decrypt
@@ -48,6 +51,12 @@ class EnigmaTest < Minitest::Test
   def test_it_can_move_letters
     enigma = Enigma.new
     assert_equal "keder ohulw", enigma.move_letters([3,27,73,20], "hello world")
+  end
+
+  def test_it_can_generate_random_key
+    enigma = Enigma.new
+    enigma.stubs(:rand).returns(135)
+    assert_equal '00135', enigma.random_key
   end
 
 end

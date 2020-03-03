@@ -6,7 +6,7 @@ class Enigma
     @alphabet = ("a".."z").to_a << " "
   end
 
-  def encrypt(message, key, date)
+  def encrypt(message, key=random_key, date)
     shift =  find_shifts(key, date)
     encrypted_message = move_letters(shift, message)
     hash = {
@@ -72,5 +72,13 @@ class Enigma
 
   def offset(date)
     (date.to_i * date.to_i) % 10000
+  end
+
+  def random_key
+    random = rand(0..99999).to_s
+    while random.length < 5
+      random.insert(0, '0')
+    end
+    random
   end
 end
