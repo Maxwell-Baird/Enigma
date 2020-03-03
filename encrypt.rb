@@ -1,7 +1,5 @@
 require './lib/enigma'
-require 'pry'
 
-ARGV == ['message.txt', 'encrypt.txt']
 enigma = Enigma.new
 file_read = File.open(ARGV[0], "r")
 message = file_read.read().split("\n")
