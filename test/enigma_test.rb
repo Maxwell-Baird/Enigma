@@ -51,6 +51,14 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, enigma.find_shifts("02715", "040895")
   end
 
+  def test_it_can_count
+    enigma = Enigma.new
+    shift1 = 3
+    shift2 = 1
+    assert_equal 0, enigma.count(shift1)
+    assert_equal 2, enigma.count(shift2)
+  end
+
   def test_it_can_move_letters
     enigma = Enigma.new
     assert_equal "keder ohulw", enigma.move_letters([3,27,73,20], "hello world")
