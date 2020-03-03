@@ -9,7 +9,15 @@ class Enigma
   def encrypt(message, key, date)
     shift =  find_shifts(key, date)
     encrypted_message = move_letters(shift, message)
+    create(encrypted_message, key, date)
+  end
 
+  def create(encrypted_message, key, date)
+    hash = {
+      :encryption => encrypted_message,
+      :key => key,
+      :date => date
+    }
   end
 
   def move_letters(shift, message)
