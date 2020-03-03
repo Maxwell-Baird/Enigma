@@ -73,4 +73,7 @@ class Enigma
   def offset(date)
     (date.to_i * date.to_i) % 10000
   end
+
+  def random_key
+  end
 end

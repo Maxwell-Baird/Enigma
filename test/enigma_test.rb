@@ -50,4 +50,10 @@ class EnigmaTest < Minitest::Test
     assert_equal "keder ohulw", enigma.move_letters([3,27,73,20], "hello world")
   end
 
+  def test_it_can_generate_random_key
+    enigma = Enigma.new
+    enigma.stubs(:rand).returns(135)
+    assert_equal '00135', enigma.random_key
+  end
+
 end
