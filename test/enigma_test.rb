@@ -34,13 +34,4 @@ class EnigmaTest < Minitest::Test
     assert_equal "keder ohulw", enigma.move_letters([3,27,73,20], "hello world")
   end
 
-  def test_it_can_make_a_hash
-    enigma = Enigma.new
-    expected = {
-      encryption: "keder ohulw",
-      key: "02715",
-      date: "040895"
-    }
-    assert_equal expected, enigma.create("keder ohulw", "02715", "040895")
-  end
 end
