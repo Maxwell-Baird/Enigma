@@ -64,11 +64,7 @@ class EnigmaTest < Minitest::Test
 
   def test_it_can_find_date
     enigma = Enigma.new
-<<<<<<< HEAD
-    Date.stubs(:today).returns(010320)
-=======
     Date.stubs(:today).returns('2020-03-01')
->>>>>>> 547b7f300334398043cb51c87708b72cb8320200
     assert_equal '010320', enigma.find_date
   end
 end
