@@ -1,4 +1,4 @@
-require_relative 'engima'
+require './lib/enigma'
 
 ARGV == [message.txt, encrypt.txt]
 enigma = Engima.new
