@@ -59,4 +59,9 @@ class EnigmaTest < Minitest::Test
     assert_equal '00135', enigma.random_key
   end
 
+  def test_it_can_find_date
+    enigma = Enigma.new
+    Date.stubs(:today).returns(010320)
+    assert_equal '010320', enigma.find_date
+  end
 end
