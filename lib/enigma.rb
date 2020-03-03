@@ -8,7 +8,7 @@ class Enigma
 
   def encrypt(message, key = random_key, date = find_date)
     shift =  find_shifts(key, date)
-    encrypted_message = move_letters(shift, message.downcase)
+    encrypted_message = move_letters_right(shift, message.downcase)
     hash = {
       :encryption => encrypted_message,
       :key => key,
@@ -47,7 +47,7 @@ class Enigma
     shift_count
   end
 
-  def move_letters(shift, message)
+  def move_letters_right(shift, message)
     encrypted = []
     each_letter = message.chars.map { |letter| letter}
     shift_count = 0

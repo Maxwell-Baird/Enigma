@@ -59,9 +59,9 @@ class EnigmaTest < Minitest::Test
     assert_equal 2, enigma.count(shift2)
   end
 
-  def test_it_can_move_letters
+  def test_it_can_move_letters_right
     enigma = Enigma.new
-    assert_equal "keder ohulw", enigma.move_letters([3,27,73,20], "hello world")
+    assert_equal "keder ohulw", enigma.move_letters_right([3,27,73,20], "hello world")
   end
 
   def test_it_can_generate_random_key
