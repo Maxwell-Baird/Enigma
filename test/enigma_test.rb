@@ -17,4 +17,9 @@ class EnigmaTest < Minitest::Test
     }
     assert_equal expected, enigma.encrypt("hello world", "02715", "040895")
   end
+
+  def test_it_can_find_offset
+    enigma = Enigma.new
+    assert_equal 1025, enigma.offset('040895')
+  end
 end
