@@ -6,7 +6,7 @@ class Enigma
     @alphabet = ("a".."z").to_a << " "
   end
 
-  def encrypt(message, key, date)
+  def encrypt(message, key=random_key, date)
     shift =  find_shifts(key, date)
     encrypted_message = move_letters(shift, message)
     hash = {

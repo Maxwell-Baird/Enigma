@@ -16,6 +16,9 @@ class EnigmaTest < Minitest::Test
       date: "040895"
     }
     assert_equal expected, enigma.encrypt("hello world", "02715", "040895")
+    enigma.stubs(:rand).returns(135)
+    binding.pry
+    assert_equal '00135', enigma.encrypt("hello world", "040895")[:key]
   end
 
   def test_it_can_decrypt
