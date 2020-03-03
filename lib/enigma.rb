@@ -2,9 +2,12 @@ require 'date'
 require 'pry'
 class Enigma
 
-  def encrypt(message, key=rand(10000..99999), date=Date.today)
-    find_shifts(key, date)
+  def encrypt(message, key, date)
+    shift =  find_shifts(key, date)
+    encrypted_message = move_letters(shift, message)
   end
+
+
 
   def find_shifts(key, date)
     shifts = []
