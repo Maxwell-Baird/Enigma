@@ -22,4 +22,10 @@ class EnigmaTest < Minitest::Test
     enigma = Enigma.new
     assert_equal 1025, enigma.offset('040895')
   end
+
+  def test_it_can_find_shifts
+    enigma = Enigma.new
+    expected = [3,27,73,20]
+    assert_equal expected, enigma.find_shifts("02715", "040895")
+  end
 end
