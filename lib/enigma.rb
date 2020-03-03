@@ -9,6 +9,7 @@ class Enigma
   def encrypt(message, key, date)
     shift =  find_shifts(key, date)
     encrypted_message = move_letters(shift, message)
+
   end
 
   def move_letters(shift, message)
