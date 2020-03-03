@@ -1,5 +1,5 @@
 require 'date'
-require 'pry'
+
 class Enigma
 
   def initialize
@@ -32,8 +32,8 @@ class Enigma
     shift_count = 0
     each_letter.each do |letter|
       index = @alphabet.index(letter)
-      find = (index - shift[shift_count]) % 27
-      encrypted << @alphabet[find]
+      #find = (index - shift[shift_count]) % 27
+      encrypted << @alphabet[(index - shift[shift_count]) % 27]
       if shift_count == 3
         shift_count = 0
       else

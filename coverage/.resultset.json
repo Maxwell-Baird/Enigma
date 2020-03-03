@@ -4,7 +4,7 @@
       "/Users/maxwellbaird/turing/module_1/project/enigma/lib/enigma.rb": {
         "lines": [
           1,
-          1,
+          null,
           1,
           null,
           1,
@@ -37,7 +37,7 @@
           3,
           3,
           33,
-          33,
+          null,
           33,
           33,
           6,
@@ -99,6 +99,6 @@
         ]
       }
     },
-    "timestamp": 1583215445
+    "timestamp": 1583216255
   }
 }
