@@ -16,9 +16,10 @@ class EnigmaTest < Minitest::Test
       date: "040895"
     }
     assert_equal expected, enigma.encrypt("hello world", "02715", "040895")
+    Date.stubs(:today).returns('2020-03-01')
+    assert_equal '010320', enigma.encrypt("hello world", "02715")[:date]
     enigma.stubs(:rand).returns(135)
-    binding.pry
-    assert_equal '00135', enigma.encrypt("hello world", "040895")[:key]
+    assert_equal '00135', enigma.encrypt("hello world")[:key]
   end
 
   def test_it_can_decrypt
@@ -30,6 +31,8 @@ class EnigmaTest < Minitest::Test
       date: "040895"
     }
     assert_equal expected, enigma.decrypt("keder ohulw", "02715", "040895")
+    Date.stubs(:today).returns('2020-03-01')
+    assert_equal '010320', enigma.decrypt("keder ohulw", "02715")[:date]
   end
 
   def test_it_can_move_letters_left
@@ -59,4 +62,9 @@ class EnigmaTest < Minitest::Test
     assert_equal '00135', enigma.random_key
   end
 
+  def test_it_can_find_date
+    enigma = Enigma.new
+    Date.stubs(:today).returns('2020-03-01')
+    assert_equal '010320', enigma.find_date
+  end
 end

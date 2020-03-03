@@ -6,7 +6,7 @@ class Enigma
     @alphabet = ("a".."z").to_a << " "
   end
 
-  def encrypt(message, key=random_key, date)
+  def encrypt(message, key = random_key, date = find_date)
     shift =  find_shifts(key, date)
     encrypted_message = move_letters(shift, message)
     hash = {
@@ -16,7 +16,7 @@ class Enigma
     }
   end
 
-  def decrypt(ciphertext, key, date)
+  def decrypt(ciphertext, key, date = find_date)
     shift =  find_shifts(key, date)
     decrypted_message = move_letters_left(shift, ciphertext)
     hash = {
@@ -80,5 +80,14 @@ class Enigma
       random.insert(0, '0')
     end
     random
+  end
+
+  def find_date
+    holder = Date.today.to_s
+    date = []
+    date << holder[-2..-1]
+    date << holder[-5..-4]
+    date << holder[-8..-7]
+    date.join
   end
 end
