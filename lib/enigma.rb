@@ -16,6 +16,16 @@ class Enigma
     }
   end
 
+  def decrypt(ciphertext, key, date)
+    shift =  find_shifts(key, date)
+    decrypted_message = move_letters(shift, ciphertext)
+    hash = {
+      :decryption => decrypted_message,
+      :key => key,
+      :date => date
+    }
+  end
+
   def move_letters(shift, message)
     encrypted = []
     each_letter = message.chars.map { |letter| letter}
