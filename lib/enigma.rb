@@ -81,4 +81,13 @@ class Enigma
     end
     random
   end
+
+  def find_date
+    holder = Date.today.to_s
+    date = []
+    date << holder[-2..-1]
+    date << holder[-5..-4]
+    date << holder[-8..-7]
+    date.join
+  end
 end

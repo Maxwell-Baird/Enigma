@@ -17,7 +17,6 @@ class EnigmaTest < Minitest::Test
     }
     assert_equal expected, enigma.encrypt("hello world", "02715", "040895")
     enigma.stubs(:rand).returns(135)
-    binding.pry
     assert_equal '00135', enigma.encrypt("hello world", "040895")[:key]
   end
 
@@ -61,7 +60,7 @@ class EnigmaTest < Minitest::Test
 
   def test_it_can_find_date
     enigma = Enigma.new
-    Date.stubs(:today).returns(010320)
+    Date.stubs(:today).returns('2020-03-01')
     assert_equal '010320', enigma.find_date
   end
 end
