@@ -32,15 +32,19 @@ class Enigma
     shift_count = 0
     each_letter.each do |letter|
       index = @alphabet.index(letter)
-      #find = (index - shift[shift_count]) % 27
       encrypted << @alphabet[(index - shift[shift_count]) % 27]
-      if shift_count == 3
-        shift_count = 0
-      else
-        shift_count += 1
-      end
+      shift_count = count(shift_count)
     end
     encrypted.join
+  end
+
+  def count(shift_count)
+    if shift_count == 3
+      shift_count = 0
+    else
+      shift_count += 1
+    end
+    shift_count
   end
 
   def move_letters(shift, message)
@@ -49,13 +53,8 @@ class Enigma
     shift_count = 0
     each_letter.each do |letter|
       index = @alphabet.index(letter)
-      find = (index + shift[shift_count]) % 27
-      encrypted << @alphabet[find]
-      if shift_count == 3
-        shift_count = 0
-      else
-        shift_count += 1
-      end
+      encrypted << @alphabet[(index + shift[shift_count]) % 27]
+      shift_count = count(shift_count)
     end
     encrypted.join
   end
