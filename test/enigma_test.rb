@@ -18,6 +18,22 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, enigma.encrypt("hello world", "02715", "040895")
   end
 
+  def test_it_can_decrypt
+    enigma = Enigma.new
+    expected =
+    {
+      decryption: "hello world",
+      key: "02715",
+      date: "040895"
+    }
+    assert_equal expected, enigma.decrypt("keder ohulw", "02715", "040895")
+  end
+
+  def test_it_can_move_letters_left
+    enigma = Enigma.new
+    assert_equal "hello world", enigma.move_letters_left([3,27,73,20], "keder ohulw")
+  end
+
   def test_it_can_find_offset
     enigma = Enigma.new
     assert_equal 1025, enigma.offset('040895')
