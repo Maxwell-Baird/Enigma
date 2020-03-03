@@ -75,5 +75,10 @@ class Enigma
   end
 
   def random_key
+    random = rand(0..99999).to_s
+    while random.length < 5
+      random.insert(0, '0')
+    end
+    random
   end
 end
